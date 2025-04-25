@@ -1,3 +1,8 @@
+# Programa super Trunfo
+O programa foi definido para escolher um atributo para comparar as duas cartas já previamente definidas. Ao executar o programa será exibido um menu para escolha do atributo, ao digitar o número do atributo, o programa apresentará a carta com o melhor atributo, ou o empate.
+
+
+####
 # ⚠️ Importante!!!
 Você pode escolher qualquer um dos desafios para desenvolver. Sinta-se à vontade para começar pelo desafio que mais lhe interessa.
 
