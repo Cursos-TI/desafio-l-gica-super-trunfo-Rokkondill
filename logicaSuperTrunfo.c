@@ -5,9 +5,10 @@ int main() {
     //Declaração das variáveis
     char est = 'A', est2 = 'B';
     char cod[4] = "A01", cod2[4] = "B02", cidade[20] = "Sao Paulo (SP)", cidade2[20] = "Rio de Janeiro (RJ)";
-    char atr[50];
+    char* atr;
     unsigned long int pop = 12325000, pop2 = 6748000, p1, p2;
-    long int np = 30, np2 = 30, temp, menu, resp;
+    long int np = 30, np2 = 30, temp;
+    int menu, menu2, resp;
     double area = 1521.11, area2 = 1200.25, pib = 699.28, pib2 = 300.50, dens, dens2, ppc, ppc2, sp1, sp2, fp1, fp2, temp2;
 
     //Inserção de dados da primeira carta
@@ -50,11 +51,60 @@ int main() {
     printf("Super Poder: %.2lf\n", sp2);
     
     //Comparando e exibindo os resultados
-    printf("\nComparacao de Cartas (Atributo: Populacao):\n");
+    printf("\nComparacao de Cartas:\n");
+    //Escolha do primeiro atributo
+    printf("Escolha o primeiro atributo para comparacao.\n");
     printf("\nDigite um numero de qual atributo será comparado entre as duas cartas:\n");
     printf("1 - Populacao\n2 - Area\n3 - PIB\n4 - Numero de Pontos Turisticos\n5 - Densidade Populacional\n6 - PIB per Capita\n7 - Super Poder\n");
-    scanf("%ld", &menu);
+    scanf("%d", &menu);
+    
+    //Validação do menu
+    if (menu < 1 || menu > 8)
+    {
+        printf("Opcao invalida.");
+        return 0;
+    }
+    
+    //Escolha do segundo atributo
+    printf("Escolha o segundo atributo para comparacao.\n");
+    printf("\nDigite um numero de qual atributo será comparado entre as duas cartas (exceto %d, escolhido anteriormente):\n", menu);
+    switch (menu)
+    {
+    case 1:
+        printf("2 - Area\n3 - PIB\n4 - Numero de Pontos Turisticos\n5 - Densidade Populacional\n6 - PIB per Capita\n7 - Super Poder\n");
+        break;
+    case 2:
+        printf("1 - Populacao\n3 - PIB\n4 - Numero de Pontos Turisticos\n5 - Densidade Populacional\n6 - PIB per Capita\n7 - Super Poder\n");
+        break;
+    case 3:
+        printf("1 - Populacao\n2 - Area\n4 - Numero de Pontos Turisticos\n5 - Densidade Populacional\n6 - PIB per Capita\n7 - Super Poder\n");
+        break;
+    case 4:
+        printf("1 - Populacao\n2 - Area\n3 - PIB\n5 - Densidade Populacional\n6 - PIB per Capita\n7 - Super Poder\n");
+        break;
+    case 5:
+        printf("1 - Populacao\n2 - Area\n3 - PIB\n4 - Numero de Pontos Turisticos\n6 - PIB per Capita\n7 - Super Poder\n");
+        break;
+    case 6:
+        printf("1 - Populacao\n2 - Area\n3 - PIB\n4 - Numero de Pontos Turisticos\n5 - Densidade Populacional\n7 - Super Poder\n");
+        break;
+    case 7:
+        printf("1 - Populacao\n2 - Area\n3 - PIB\n4 - Numero de Pontos Turisticos\n5 - Densidade Populacional\n6 - PIB per Capita\n");
+        break;
+    
+    default:
+        printf("Erro 1.");
+        break;
+    }
+    scanf("%d", &menu2);
+    
+    //Validacao do menu 2
+    if(menu2 < 1 || menu2 > 8 || menu == menu2){
+        printf("Opcao invalida!");
+        return 0;
+    }
 
+    //Comparacao do primeiro atributo
     switch (menu)
     {
     case 1:
@@ -107,11 +157,71 @@ int main() {
         resp = 2;
         break;
     default:
-        printf("Opcao invalida!\n");
+        printf("Erro menu 1!\n");
+        return 0;
+        break;
+    }
+    //Comparacao do segundo atributo
+    switch (menu2)
+    {
+    case 1:
+        temp = pop - pop2;
+        strcpy(atr,"Populacao");
+        p1 = pop;
+        p2 = pop2;
+        resp = 1;
+        break;
+    case 2:
+        temp2 = area - area2;
+        strcpy(atr,"Area");
+        fp1 = area;
+        fp2 = area2;
+        resp = 2;
+        break;
+    case 3:
+        temp2 = pib - pib2;
+        strcpy(atr,"PIB");
+        fp1 = pib;
+        fp2 = pib2;
+        resp = 2;
+        break;
+    case 4:
+        temp = np - np2;
+        strcpy(atr,"Numero de Pontos Turisticos");
+        p1 = np;
+        p2 = np2;
+        resp = 1;
+        break;
+    case 5:
+        temp2 = dens - dens2;
+        strcpy(atr,"Densidade Populacional");
+        fp1 = dens;
+        fp2 = dens2;
+        resp = 3;
+        break;
+    case 6:
+        temp2 = ppc - ppc2;
+        strcpy(atr,"PIB per Capita");
+        fp1 = ppc;
+        fp2 = ppc2;
+        resp = 2;
+        break;
+    case 7:
+        temp2 = sp1 - sp2;
+        strcpy(atr,"Super Poder");
+        fp1 = sp1;
+        fp2 = sp2;
+        resp = 2;
+        break;
+    default:
+        printf("Erro menu 1!\n");
         return 0;
         break;
     }
 
+
+
+    //Respostas
     printf("\nCompararacao entre %s e %s\n", cidade, cidade2);
     printf("Atributo: %s\n", atr);
     switch (resp)
