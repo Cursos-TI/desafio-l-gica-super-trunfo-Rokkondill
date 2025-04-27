@@ -5,11 +5,11 @@ int main() {
     //Declaração das variáveis
     char est = 'A', est2 = 'B';
     char cod[4] = "A01", cod2[4] = "B02", cidade[20] = "Sao Paulo (SP)", cidade2[20] = "Rio de Janeiro (RJ)";
-    char* atr;
-    unsigned long int pop = 12325000, pop2 = 6748000, p1, p2;
-    long int np = 30, np2 = 30, temp;
-    int menu, menu2, resp;
-    double area = 1521.11, area2 = 1200.25, pib = 699.28, pib2 = 300.50, dens, dens2, ppc, ppc2, sp1, sp2, fp1, fp2, temp2;
+    char *atr, *atr2;
+    unsigned long int pop = 12325000, pop2 = 6748000, p1, p2, p12, p22;
+    long int np = 30, np2 = 30, temp, temp12, soma, soma2;
+    int menu, menu2, resp, resp2, resp3;
+    double area = 1521.11, area2 = 1200.25, pib = 699.28, pib2 = 300.50, dens, dens2, ppc, ppc2, sp1, sp2, fp1, fp2, fp12, fp22, temp2, temp22, fsoma, fsoma2;
 
     //Inserção de dados da primeira carta
     
@@ -34,7 +34,7 @@ int main() {
     printf("Numero de Pontos Turisticos: %ld\n", np);
     printf("Densidade Populacional: %.2lf hab/km2\n", dens);
     printf("PIB per Capita: %.2lf reais\n", ppc);
-    printf("Super Poder: %.2lf", sp1);
+    printf("Super Poder: %.2lf\n", sp1);
 
     //Impressão das cartas
     //Carta 2
@@ -59,9 +59,9 @@ int main() {
     scanf("%d", &menu);
     
     //Validação do menu
-    if (menu < 1 || menu > 8)
+    if (menu < 1 || menu > 7)
     {
-        printf("Opcao invalida.");
+        printf("Opcao invalida.\n");
         return 0;
     }
     
@@ -93,14 +93,14 @@ int main() {
         break;
     
     default:
-        printf("Erro 1.");
+        printf("Erro 1.\n");
         break;
     }
     scanf("%d", &menu2);
     
     //Validacao do menu 2
-    if(menu2 < 1 || menu2 > 8 || menu == menu2){
-        printf("Opcao invalida!");
+    if(menu2 < 1 || menu2 > 7 || menu == menu2){
+        printf("Opcao invalida!\n");
         return 0;
     }
 
@@ -109,49 +109,49 @@ int main() {
     {
     case 1:
         temp = pop - pop2;
-        strcpy(atr,"Populacao");
+        atr = "Populacao";
         p1 = pop;
         p2 = pop2;
         resp = 1;
         break;
     case 2:
         temp2 = area - area2;
-        strcpy(atr,"Area");
+        atr = "Area";
         fp1 = area;
         fp2 = area2;
         resp = 2;
         break;
     case 3:
         temp2 = pib - pib2;
-        strcpy(atr,"PIB");
+        atr = "PIB";
         fp1 = pib;
         fp2 = pib2;
         resp = 2;
         break;
     case 4:
         temp = np - np2;
-        strcpy(atr,"Numero de Pontos Turisticos");
+        atr = "Numero de Pontos Turisticos";
         p1 = np;
         p2 = np2;
         resp = 1;
         break;
     case 5:
         temp2 = dens - dens2;
-        strcpy(atr,"Densidade Populacional");
+        atr = "Densidade Populacional";
         fp1 = dens;
         fp2 = dens2;
         resp = 3;
         break;
     case 6:
         temp2 = ppc - ppc2;
-        strcpy(atr,"PIB per Capita");
+        atr = "PIB per Capita";
         fp1 = ppc;
         fp2 = ppc2;
         resp = 2;
         break;
     case 7:
         temp2 = sp1 - sp2;
-        strcpy(atr,"Super Poder");
+        atr = "Super Poder";
         fp1 = sp1;
         fp2 = sp2;
         resp = 2;
@@ -161,57 +161,58 @@ int main() {
         return 0;
         break;
     }
+    
     //Comparacao do segundo atributo
     switch (menu2)
     {
     case 1:
-        temp = pop - pop2;
-        strcpy(atr,"Populacao");
-        p1 = pop;
-        p2 = pop2;
-        resp = 1;
+        temp12 = pop - pop2;
+        atr2 = "Populacao";
+        p12 = pop;
+        p22 = pop2;
+        resp2 = 1;
         break;
     case 2:
-        temp2 = area - area2;
-        strcpy(atr,"Area");
-        fp1 = area;
-        fp2 = area2;
-        resp = 2;
+        temp22 = area - area2;
+        atr2 = "Area";
+        fp12 = area;
+        fp22 = area2;
+        resp2 = 2;
         break;
     case 3:
-        temp2 = pib - pib2;
-        strcpy(atr,"PIB");
-        fp1 = pib;
-        fp2 = pib2;
-        resp = 2;
+        temp22 = pib - pib2;
+        atr2 = "PIB";
+        fp12 = pib;
+        fp22 = pib2;
+        resp2 = 2;
         break;
     case 4:
-        temp = np - np2;
-        strcpy(atr,"Numero de Pontos Turisticos");
-        p1 = np;
-        p2 = np2;
-        resp = 1;
+        temp12 = np - np2;
+        atr2 = "Numero de Pontos Turisticos";
+        p12 = np;
+        p22 = np2;
+        resp2 = 1;
         break;
     case 5:
-        temp2 = dens - dens2;
-        strcpy(atr,"Densidade Populacional");
-        fp1 = dens;
-        fp2 = dens2;
-        resp = 3;
+        temp22 = dens - dens2;
+        atr2 = "Densidade Populacional";
+        fp12 = dens;
+        fp22 = dens2;
+        resp2 = 3;
         break;
     case 6:
-        temp2 = ppc - ppc2;
-        strcpy(atr,"PIB per Capita");
-        fp1 = ppc;
-        fp2 = ppc2;
-        resp = 2;
+        temp22 = ppc - ppc2;
+        atr2 = "PIB per Capita";
+        fp12 = ppc;
+        fp22 = ppc2;
+        resp2 = 2;
         break;
     case 7:
-        temp2 = sp1 - sp2;
-        strcpy(atr,"Super Poder");
-        fp1 = sp1;
-        fp2 = sp2;
-        resp = 2;
+        temp22 = sp1 - sp2;
+        atr2 = "Super Poder";
+        fp12 = sp1;
+        fp22 = sp2;
+        resp2 = 2;
         break;
     default:
         printf("Erro menu 1!\n");
@@ -219,11 +220,33 @@ int main() {
         break;
     }
 
+    //Soma dos atributos
+    if(menu == 1 || menu == 4 ){
+        if(menu2 == 1 || menu2 == 4){
+            soma = p1 + p12;
+            soma2 = p2 + p22;
+            resp3 = 1;
+        } else{
+            fsoma = (double) p1 + fp12;
+            fsoma2 = (double) p2 + fp22;
+            resp3 = 2;
+        }
+    } else{
+        if(menu2 == 1 || menu2 == 4){
+            fsoma = fp1 + (double) p12;
+            fsoma2 = fp2 + (double) p22;
+            resp3 = 2;
+        } else{
+            fsoma = fp1 + fp12;
+            fsoma2 = fp2 + fp22;
+            resp3 = 2;
+        }
+    }
 
 
-    //Respostas
+    //Respostas primeiro atributo
     printf("\nCompararacao entre %s e %s\n", cidade, cidade2);
-    printf("Atributo: %s\n", atr);
+    printf("\nAtributo: %s\n", atr);
     switch (resp)
     {
     case 1:
@@ -273,8 +296,97 @@ int main() {
         printf("Erro na programacao\n");
         break;
     }
+
+    //Respostas segundo atributo
+    printf("\nAtributo: %s\n", atr2);
+    switch (resp2)
+    {
+    case 1:
+        printf("Carta 1: %ld / Carta 2: %ld\n", p12, p22);
+        if (temp12 > 0)
+        {
+            printf("Carta 1 (%s) venceu!!!\n", cidade);
+        } else{
+            if (temp12 < 0)
+            {
+                printf("Carta 2 (%s) venceu!!!\n", cidade2);
+            } else{
+                printf("EMPATE!!!\n");
+            }
+        }
+        break;
+    case 2:
+    printf("Carta 1: %.2lf / Carta 2: %.2lf\n", fp12, fp22);
+        if (temp22 > 0)
+        {
+            printf("Carta 1 (%s) venceu!!!\n", cidade);
+        } else{
+            if (temp22 < 0)
+            {
+                printf("Carta 2 (%s) venceu!!!\n", cidade2);
+            } else{
+                printf("EMPATE!!!\n");
+            }
+        }
+        break;
+    case 3:
+        printf("Carta 1: %.2lf / Carta 2: %.2lf\n", fp12, fp22);
+        if (temp22 < 0)
+        {
+            printf("Carta 1 (%s) venceu!!!\n", cidade);
+        } else{
+            if (temp22 > 0)
+            {
+                printf("Carta 2 (%s) venceu!!!\n", cidade2);
+            } else{
+                printf("EMPATE!!!\n");
+            }
+        }
+        break;
     
+    default:
+        printf("Erro na programacao\n");
+        break;
+    }
     
+    //Respostas soma de atributos
+    printf("\nSoma dos atributos: %s e %s\n", atr, atr2);
+    switch (resp3)
+    {
+    case 1:
+        printf("Carta 1: %ld / Carta 2: %ld\n", soma, soma2);
+        if (soma - soma2 > 0)
+        {
+            printf("Carta 1 (%s) venceu!!!\n", cidade);
+        } else{
+            if (soma - soma2 < 0)
+            {
+                printf("Carta 2 (%s) venceu!!!\n", cidade2);
+            } else{
+                printf("EMPATE!!!\n");
+            }
+        }
+        break;
+    case 2:
+    printf("Carta 1: %.2lf / Carta 2: %.2lf\n", fsoma, fsoma2);
+        if (fsoma - fsoma2 > 0)
+        {
+            printf("Carta 1 (%s) venceu!!!\n", cidade);
+        } else{
+            if (fsoma - fsoma2 < 0)
+            {
+                printf("Carta 2 (%s) venceu!!!\n", cidade2);
+            } else{
+                printf("EMPATE!!!\n");
+            }
+        }
+        break;
+    
+    default:
+        printf("Erro na programacao\n");
+        break;
+    }
+    printf("\n");
     
     
     return 0;
